@@ -1,0 +1,62 @@
+services:
+  postgresql:
+    image: postgres:17
+    container_name: gpas-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: root
+      TZ: Europe/Berlin
+    volumes:
+      - ./gpas/postgres-sqls:/docker-entrypoint-initdb.d
+    command:
+      - "-cmax_connections=100"
+      - "-cshared_buffers=512MB"
+      - "-ceffective_cache_size=5GB"
+
+  gpas-wildfly:
+    image: mosaicgreifswald/gpas:2026.1.1
+    container_name: gpas-wildfly
+    ports:
+      - "8787:8787"
+      - "8080:8080"
+      - "9990:9990"
+    environment:
+      TTP_DB_DBMS: postgresql
+      WF_WAIT_FOR_PORTS: postgresql:5432:120
+      WF_HEALTHCHECK_URLS: |
+        http://localhost:8080
+        http://localhost:8080/gpas-rest/health/state
+    depends_on:
+      - postgresql
+
+  mariadb:
+    image: mariadb:11
+    container_name: epix-mariadb
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      TZ: Europe/Berlin
+    volumes:
+      - ./epix/mariadb-sqls:/docker-entrypoint-initdb.d
+    command:
+      - "--max_allowed_packet=20M"
+      - "--default-time-zone=Europe/Berlin"
+      - "--innodb_buffer_pool_size=2G"
+
+  epix-wildfly:
+    image: mosaicgreifswald/epix:2026.1.1
+    container_name: epix-wildfly
+    ports:
+      - "8788:8787"
+      - "8081:8080"
+      - "9991:9990"
+    environment:
+      TTP_DB_DBMS: mariadb
+      WF_WAIT_FOR_PORTS: mariadb:3306:120
+      WF_HEALTHCHECK_URLS: |
+        http://localhost:8080
+        http://localhost:8080/epix-rest/health/state
+    depends_on:
+      - mariadb

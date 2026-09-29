@@ -1,0 +1,64 @@
+[project]
+name = "mosaic-python-client"
+version = "0.2.0"
+description = "Zeep client for interacting with the SOAP interfaces provided by E-PIX and gPAS of the MOSAIC suite by the THS Greifswald."
+authors = [
+    {name = "Maximilian Jugl"},
+    {name = "Paul Brassel", email = "paul.brassel@medizin.uni-leipzig.de"}
+]
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11,<4"
+dependencies = [
+    "zeep (>=4.3.3,<5.0.0)",
+    "marshmallow (>=4.3.1,<5.0.0)"
+]
+keywords = ["client", "soap", "e-pix", "epix", "gpas", "mosaic", "zeep"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Medical Sciencse Apps.",
+    "Operating System :: OS Independent",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Typing :: Typed",
+]
+
+[project.urls]
+repository = "https://github.com/ul-mds/mosaic-python-client"
+
+[tool.poetry]
+packages = [{ include = "mosaic_client" }]
+
+[tool.ruff]
+line-length = 120
+
+[tool.pytest.ini_options]
+env_files = [
+    ".env.test"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pre-commit (>=4.6.2,<5.0.0)",
+    "ruff (>=0.16.8,<0.17.0)",
+    "pytest (>=9.1.1,<10.0.0)",
+    "readme-coverage-badger (>=1.1.0,<2.0.0)",
+    "pytest-cov (>=7.1.0,<8.0.0)",
+    "pytest-dotenv (>=0.5.2,<0.6.0)",
+    "testcontainers (>=4.15.0,<5.0.0)",
+    "docker (>=7.2.0,<8.0.0)"
+]
