@@ -1,3 +1,9 @@
+[![PyPI](https://img.shields.io/pypi/v/mosaic-python-client?cacheSeconds=0&label=PyPI)](https://pypi.org/project/mosaic-python-client/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/mosaic-python-client?cacheSeconds=0&label=Python)](https://pypi.org/project/mosaic-python-client/)
+![Code Coverage](https://img.shields.io/badge/Coverage-96%25-brightgreen.svg)
+[![License](https://img.shields.io/pypi/l/mosaic-python-client?cacheSeconds=0&label=License)](https://pypi.org/project/mosaic-python-client/)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
+
 # MOSAIC Client
 
 The `mosaic_client` library provides wrappers around the SOAP (**S**imple **O**bject **A**ccess **P**rotocol) interfaces
@@ -9,6 +15,8 @@ leveraged by [marshmallow](https://marshmallow.readthedocs.io/en/latest/).
 
 ## Installation
 
+To install the client, Python 3.11 or higher is required.
+
 ```shell
 pip install mosaic-python-client
 ```
@@ -18,7 +26,7 @@ pip install mosaic-python-client
 Both E-PIX and gPAS client can be either instantiated by passing the WSDL URLs as strings or by passing your own
 `zeep.Client` instance.
 This section briefly demonstrates the usage of both clients.
-For more information, have a look at the clients available methods and their docstrings.
+For more information, have a look at the clients available methods and the respective docstrings.
 
 ### E-PIX client
 
@@ -233,7 +241,7 @@ The following table shows all available options to configure pytest.
 | PYTEST_GPAS_DOMAIN_WSDL_URL<sup>1)</sup>     | WSDL URL for the gPAS domain service                |             |
 | PYTEST_GPAS_IMAGE_TAG<sup>2)</sup>           | gPAS image tag that is used for the test-container  | latest      |
 
-<sup>1)</sup> Only needed, if `PYTEST_USE_TESTCONTAINERS` is set to `0`.
+<sup>1)</sup> Only needed, if `PYTEST_USE_TESTCONTAINERS` is set to `0`.<br>
 <sup>2)</sup> Only used, if `PYTEST_USE_TESTCONTAINERS` is set to `1`.
 
 It is possible to define these variables in a `.env.test` file.
