@@ -57,12 +57,14 @@ epix = EPIXClient(
     management_client="http://localhost:8081/epix/epixManagementService?wsdl",
 )
 
-epix.add_domain(domain=Domain(
-    name="default",
-    label="default",
-    mpi_domain=epix.get_identifier_domain(identifier_domain_name="MPI"),
-    safe_source=epix.get_source(source_name="dummy_safe_source"),
-))
+epix.add_domain(
+    domain=Domain(
+        name="default",
+        label="default",
+        mpi_domain=epix.get_identifier_domain(identifier_domain_name="MPI"),
+        safe_source=epix.get_source(source_name="dummy_safe_source"),
+    )
+)
 ```
 
 Now, it is possible to request an MPI for an identity.
