@@ -29,6 +29,6 @@ jobs:
       - name: Install dependencies
         run: poetry install --with dev
       - name: Test
-        run: poetry run pytest tests --cov=fable_client --cov-branch --cov-fail-under=90
+        run: poetry run pytest tests --cov=mosaic_client --cov-branch --cov-fail-under=90
         env:
           PYTEST_USE_TESTCONTAINERS: 1
