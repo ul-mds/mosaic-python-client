@@ -1,6 +1,6 @@
 [project]
 name = "mosaic-python-client"
-version = "0.2.0"
+version = "0.3.0"
 description = "Zeep client for interacting with the SOAP interfaces provided by E-PIX and gPAS of the MOSAIC suite by the THS Greifswald."
 authors = [
     {name = "Maximilian Jugl"},
