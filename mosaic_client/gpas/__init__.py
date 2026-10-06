@@ -1,8 +1,36 @@
 from mosaic_client.gpas.client import GPASClient
-from mosaic_client.gpas.models import Domain, DomainConfig, DomainResponse
-from mosaic_client.gpas.schemas import DomainConfigSchema, DomainResponseSchema, DomainSchema
+from mosaic_client.gpas.models import (
+    AnonymizationResponse,
+    DeletionResponse,
+    Domain,
+    DomainConfig,
+    DomainResponse,
+    InsertPairException,
+    Pseudonym,
+    PseudonymNet,
+    PseudonymNetNode,
+    PseudonymTree,
+    ValueToPseudonyms,
+)
+from mosaic_client.gpas.schemas import (
+    AnonymizationResponseSchema,
+    DeletionResponseSchema,
+    DomainConfigSchema,
+    DomainResponseSchema,
+    DomainSchema,
+    InsertPairExceptionSchema,
+    PseudonymNetNodeSchema,
+    PseudonymNetSchema,
+    PseudonymSchema,
+    PseudonymTreeSchema,
+    ValueToPseudonymsSchema,
+)
 
 __all__ = [
+    "AnonymizationResponse",
+    "AnonymizationResponseSchema",
+    "DeletionResponse",
+    "DeletionResponseSchema",
     "Domain",
     "DomainConfig",
     "DomainConfigSchema",
@@ -10,4 +38,16 @@ __all__ = [
     "DomainResponseSchema",
     "DomainSchema",
     "GPASClient",
+    "InsertPairException",
+    "InsertPairExceptionSchema",
+    "Pseudonym",
+    "PseudonymNet",
+    "PseudonymNetNode",
+    "PseudonymNetNodeSchema",
+    "PseudonymNetSchema",
+    "PseudonymSchema",
+    "PseudonymTree",
+    "PseudonymTreeSchema",
+    "ValueToPseudonyms",
+    "ValueToPseudonymsSchema",
 ]

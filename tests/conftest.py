@@ -12,7 +12,7 @@ from mosaic_client import EPIXClient, GPASClient
 from mosaic_client.epix import Domain as EPIXDomain
 from mosaic_client.epix import IdentifierDomain, Person, Source
 from mosaic_client.gpas import Domain as GPASDomain
-from mosaic_client.gpas import DomainConfig
+from mosaic_client.gpas import DomainConfig, ValueToPseudonyms
 from tests.helpers import random_identity, random_string
 
 
@@ -257,16 +257,16 @@ def person(epix_client, epix_domain, epix_source) -> Iterator[Person]:
 
 
 @pytest.fixture(scope="session")
-def value_psn_pair_factory(gpas_client, gpas_domain) -> Callable[[], tuple[str, str]]:
-    def factory() -> tuple[str, str]:
+def value_psn_pair_factory(gpas_client, gpas_domain) -> Callable[[], ValueToPseudonyms]:
+    def factory() -> ValueToPseudonyms:
         value = random_string()
-        psn = gpas_client.get_or_create_pseudonym_for(domain_name=gpas_domain, value=value)
+        relation = gpas_client.get_or_create_pseudonyms_for(domain_name=gpas_domain, value=value)
 
-        return value, psn
+        return relation
 
     return factory
 
 
 @pytest.fixture()
-def value_psn_pair(value_psn_pair_factory) -> tuple[str, str]:
+def value_psn_pair(value_psn_pair_factory) -> ValueToPseudonyms:
     return value_psn_pair_factory()
