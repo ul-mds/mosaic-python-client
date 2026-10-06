@@ -19,3 +19,8 @@ def random_identity() -> Identity:
         birth_date=datetime.datetime.now(tz=datetime.UTC),
         gender=random.choice(["m", "f"]),
     )
+
+
+def random_date(max_days: int = 100) -> datetime.date:
+    delta = random.randint(1, max_days)
+    return datetime.datetime.now(tz=datetime.UTC).date() + datetime.timedelta(days=delta)

@@ -211,9 +211,9 @@ gpas = GPASClient(
     domain_client="http://localhost:8080/gpas/DomainService?wsdl",
 )
 
-pseudonym = gpas.get_or_create_pseudonym_for(domain_name="default", value="value123")
+pseudonym = gpas.get_or_create_pseudonyms_for(domain_name="default", value="value123")
 
-print(f"Pseudonym: {pseudonym}")
+print(f"Pseudonym: {pseudonym.pseudonym}")
 ```
 
 ```text
